@@ -1,5 +1,5 @@
 # mobileye project
-In this project we have developed an algorithm for locating traffic lights in the image and distance from the traffic light.
+In this project we developed an algorithm for locating traffic lights in the image and distance from a traffic light.
 
 
 ## Team Members
