@@ -13,11 +13,12 @@ In this project we have developed an algorithm for locating traffic lights in th
 * matplotlib
 * jupyterlab
 * tensorflow
+* scipy
 
 
 ## Credits
-* An Invitation to 3-D Vision 
+* 
 
 
 ## Special Thanks
-* Mobileye team
+* Our mentors from Mobileye team
