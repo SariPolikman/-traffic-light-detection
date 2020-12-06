@@ -12,7 +12,7 @@ In this project we have developed an algorithm for locating traffic lights in th
 * numpy
 * matplotlib
 * jupyterlab
-*tensorflow
+* tensorflow
 
 
 ## Credits
