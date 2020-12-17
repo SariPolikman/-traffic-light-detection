@@ -29,7 +29,7 @@ def print_image(image):
 
 def filter_by_arg(max_filtered, grad, arg):
     _filter = np.argwhere(grad > arg)
-    max = np.argwhere(max == grad)
+    max = np.argwhere(max_filtered == grad)
     _filter = set((tuple(i) for i in _filter))
     max = set((tuple(i) for i in max))
 
@@ -73,7 +73,7 @@ def find_tfl_lights_by_color(tfl, color):
 
     g = ndimage.maximum_filter(grad, size=20)
 
-    x, y = tfl.filter_by_arg(g, grad, 25)
+    x, y = filter_by_arg(g, grad, 25)
 
     return x, y
 

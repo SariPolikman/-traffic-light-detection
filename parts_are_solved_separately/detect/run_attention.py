@@ -1,19 +1,13 @@
-from project import find_tfl_lights
+from detect_light import find_tfl_lights
 import os
 import json
 import glob
 import argparse
 
 import numpy as np
-from scipy import signal as sg
-import scipy.ndimage as ndimage
-from scipy.ndimage.filters import maximum_filter
-
 from PIL import Image
 
 import matplotlib.pyplot as plt
-
-
 
 
 def show_image_and_gt(image, objs, fig_num=None):
