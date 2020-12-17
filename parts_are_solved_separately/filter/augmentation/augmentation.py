@@ -66,13 +66,16 @@ class Augmentation:
         self.save(data, labels, dir)
 
     def zoom_data(self, zoom):
-        zm1 = clipped_zoom(img, 0.5)
-        zm2 = clipped_zoom(img, 1.5)
+        from scipy import ndimage
+        import matplotlib.pyplot as plt
+        fig = plt.figure()
+        ax1 = fig.add_subplot(121)  # left side
+        ax2 = fig.add_subplot(122)  # right side
+        ascent = self.data[0]
+        result = ndimage.zoom(ascent, 3)
+        ax1.imshow(ascent)
+        ax2.imshow(result)
 
-        fig, ax = plt.subplots(1, 3)
-        ax[0].imshow(img)
-        ax[1].imshow(zm1)
-        ax[2].imshow(zm2)
 
 
 def augmentations():
