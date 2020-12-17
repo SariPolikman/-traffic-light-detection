@@ -29,16 +29,16 @@ def print_image(image):
 
 def filter_by_arg(max_filtered, grad, arg):
     _filter = np.argwhere(grad > arg)
-    _filter[:, [0, 1]] = _filter[:, [1, 0]]
+    max = np.argwhere(max == grad)
     _filter = set((tuple(i) for i in _filter))
+    max = set((tuple(i) for i in max))
 
-    max_filtered = np.argwhere(max_filtered == grad)
-    max_filtered[:, [0, 1]] = max_filtered[:, [1, 0]]
-    max_filtered = set((tuple(i) for i in max_filtered))
+    res = _filter.intersection(max)
 
-    res = _filter.intersection(max_filtered)
+    x = list(map(lambda x: x[0], res))
+    y = list(map(lambda x: x[1], res))
 
-    return res
+    return x, y
 
 
 def find_n_max_pixels(c_image):
@@ -73,11 +73,9 @@ def find_tfl_lights_by_color(tfl, color):
 
     g = ndimage.maximum_filter(grad, size=20)
 
-    max_pixels = find_n_max_pixels(grad)
+    x, y = tfl.filter_by_arg(g, grad, 25)
 
-    res = filter_by_arg(g, grad, max_pixels)
-
-    return res
+    return x, y
 
 
 def find_tfl_lights(c_image: np.ndarray):
@@ -89,11 +87,10 @@ def find_tfl_lights(c_image: np.ndarray):
 
     tfl = TFL(c_image)
 
-    green = find_tfl_lights_by_color(tfl, GREEN)
-    red = find_tfl_lights_by_color(tfl, RED)
-    res = list(red) + list(green), ("R" + (len(red) - 1) *
-                                    " R" + len(green) * " G").split(" ")
-    return res
+    green_x, green_y = find_tfl_lights_by_color(tfl, GREEN)
+    red_x, red_y = find_tfl_lights_by_color(tfl, RED)
+
+    return red_x, red_y, green_x, green_y
 
 
 class TFL:
