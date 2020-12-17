@@ -57,5 +57,5 @@ for i in range(prev_frame_id, curr_frame_id):
     EM = np.dot(data['egomotion_' + str(i) + '-' + str(i + 1)], EM)
 curr_container.EM = EM
 curr_container = SFM.calc_TFL_dist(prev_container, curr_container, focal, pp)
-# visualize(prev_container, curr_container, focal, pp)
+visualize(prev_container, curr_container, focal, pp)
 
